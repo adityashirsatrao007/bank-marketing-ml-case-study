@@ -1,8 +1,9 @@
 import os
 from pathlib import Path
 
-# Paths
-BASE_DIR = Path("/run/media/aditya/Z/AML")
+# Paths — default to the repository root so the pipeline runs anywhere
+# (local or CI). Override with BANK_ML_BASE_DIR if data must live elsewhere.
+BASE_DIR = Path(os.environ.get("BANK_ML_BASE_DIR", Path(__file__).resolve().parent.parent))
 DATA_DIR = BASE_DIR / "data"
 SRC_DIR = BASE_DIR / "src"
 WEB_DIR = BASE_DIR / "web"
